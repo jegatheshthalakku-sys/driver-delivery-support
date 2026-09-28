@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Driver Delivery Support</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="icon">🚚</div>
+            <h1>Driver Delivery Support</h1>
+            <p>Smart assistance for delivery drivers</p>
+        </div>
+
+        <div class="card">
+
+            <h2>Describe Your Issue</h2>
+            <p class="subtitle">
+                Tell us what problem you are facing during delivery.
+            </p>
+
+            <form action="/support" method="POST">
+
+                <textarea
+                    name="query"
+                    placeholder="Example: Customer is not answering my call..."
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    Get Support
+                </button>
+
+            </form>
+
+        </div>
+
+        {% if category %}
+
+        <div class="result-card">
+
+            <h2>Support Result</h2>
+
+            <div class="result">
+                <span>Issue Category</span>
+                <strong>{{ category }}</strong>
+            </div>
+
+            <div class="result">
+                <span>Priority</span>
+                <span class="priority-badge {{ priority|lower }}">
+    {{ priority }}
+</span>
+            </div>
+
+            <div class="result">
+                <span>Suggested Response</span>
+                <strong>{{ response }}</strong>
+            </div>
+
+            <div class="result">
+                <span>Recommended Action</span>
+                <strong>{{ action }}</strong>
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        <footer>
+            Driver Delivery Support System
+        </footer>
+
+    </div>
+
+</body>
+</html>
